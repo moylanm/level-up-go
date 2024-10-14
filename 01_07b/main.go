@@ -5,6 +5,33 @@ import (
 	"log"
 )
 
+type operatorType int
+
+const (
+	openBracket operatorType = iota
+	closedBracket
+	otherOperator
+)
+
+var bracketPairs = map[rune]rune {
+	'(': ')',
+	'[': ']',
+	'{': '}',
+}
+
+func getOperatorType(op rune) operatorType {
+	for ob, cb := range bracketPairs {
+		switch op {
+		case ob:
+			return openBracket
+		case cb:
+			return closedBracket
+		}
+	}
+
+	return otherOperator
+}
+
 // isBalanced returns whether the given expression
 // has balanced brackets.
 func isBalanced(expr string) bool {
