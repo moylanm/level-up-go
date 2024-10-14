@@ -14,7 +14,6 @@ const path = "entries.json"
 type raffleEntry struct {
 	ID		int	   `json:"id,string"`
 	Name	string `json:"name"`
-	Country string `json:"country,omitempty"`
 }
 
 // importData reads the raffle entries from file and creates the entries slice.
