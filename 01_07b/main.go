@@ -55,7 +55,22 @@ func (s *stack) pop() *rune {
 // isBalanced returns whether the given expression
 // has balanced brackets.
 func isBalanced(expr string) bool {
-	return false
+	s := stack{}
+
+	for _, r := range []rune(expr) {
+		switch getOperatorType(r) {
+		case openBracket:
+			s.push(r)
+		case closedBracket:
+			t := s.pop()
+
+			if t == nil || bracketPairs[*t] != r {
+				return false
+			}
+		}
+	}
+
+	return true
 }
 
 // printResult prints whether the expression is balanced.
