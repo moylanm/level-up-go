@@ -19,7 +19,7 @@ func parseTime(target string) time.Time {
 
 // calcSleeps returns the number of sleeps until the target.
 func calcSleeps(target time.Time) float64 {
-	return float64(time.Until(target) / (24 * time.Hour)) 
+	return time.Until(target).Hours() / 24
 }
 
 func main() {
