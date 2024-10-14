@@ -20,11 +20,7 @@ func getBiggestMarket(users []User) (string, int) {
 	markets := make(map[string]int)
 
 	for _, user := range users {
-		if _, ok := markets[user.Country]; !ok {
-			markets[user.Country] = 1
-		} else {
-			markets[user.Country]++
-		}
+		markets[user.Country]++
 	}
 
 	var country string
