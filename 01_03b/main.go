@@ -20,14 +20,14 @@ type raffleEntry struct {
 func importData() []raffleEntry {
 	jsonData, err := os.ReadFile(path)
 	if err != nil {
-		log.Fatal("Error: ", err)
+		log.Fatal(err)
 	}
 
 	entries := []raffleEntry{}
 
 	err = json.Unmarshal(jsonData, &entries)
 	if err != nil {
-		log.Fatal("Error: ", err)
+		log.Fatal(err)
 	}
 
 	return entries
