@@ -70,7 +70,7 @@ func isBalanced(expr string) bool {
 		}
 	}
 
-	return true
+	return len(s.elems) == 0
 }
 
 // printResult prints whether the expression is balanced.
