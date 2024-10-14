@@ -57,7 +57,7 @@ func (s *stack) pop() *rune {
 func isBalanced(expr string) bool {
 	s := stack{}
 
-	for _, r := range []rune(expr) {
+	for _, r := range expr {
 		switch getOperatorType(r) {
 		case openBracket:
 			s.push(r)
