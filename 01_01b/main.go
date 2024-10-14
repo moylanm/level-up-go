@@ -11,8 +11,8 @@ var expectedFormat = "2006-01-02"
 // parseTime validates and parses a given date string.
 func parseTime(target string) time.Time {
 	t, err := time.Parse(expectedFormat, target)
-	if err != nil {
-		return time.Time{}
+	if err != nil || time.Now().After(t) {
+		log.Fatal("Invalid date")
 	}
 	return t
 }
