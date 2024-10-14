@@ -10,7 +10,9 @@ const path = "entries.json"
 
 // raffleEntry is the struct we unmarshal raffle entries into
 type raffleEntry struct {
-	// TODO: Fill in definition
+	ID		int64  `json:id`
+	name	string `json:name`
+	country string `json:country,omitempty`
 }
 
 // importData reads the raffle entries from file and creates the entries slice.
