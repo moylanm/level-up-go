@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 	"text/tabwriter"
 )
 
@@ -19,7 +20,19 @@ type Song struct {
 
 // makePlaylist makes the merged sorted list of songs
 func makePlaylist(albums [][]Song) []Song {
-	panic("NOT IMPLEMENTED")
+	songs := make([]Song, 0)
+
+	for _, album := range albums {
+		for _, song := range album {
+			songs = append(songs, song)
+		}
+	}
+
+	sort.Slice(songs, func(i, j int) bool {
+		return songs[i].PlayCount > songs[j].PlayCount
+	})
+
+	return songs
 }
 
 func main() {
