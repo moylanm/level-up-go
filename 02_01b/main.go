@@ -15,7 +15,17 @@ var messages = []string{
 
 // repeat concurrently prints out the given message n times
 func repeat(n int, message string) {
-	panic("NOT IMPLEMENTED")
+	ch := make(chan struct{})
+	for i := range n {
+		go func(i int) {
+			log.Printf("[G%d]:%s\n", i, message)
+			ch <- struct{}{}
+		}(i)
+	}
+
+	for range n {
+		<-ch
+	}
 }
 
 func main() {
